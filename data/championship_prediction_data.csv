@@ -1,0 +1,31 @@
+TeamID,TeamCity,TeamName,Conference,ConferenceRecord,PlayoffRank,Division,DivisionRank,WINS,LOSSES,WinPCT,HOME,ROAD,L10,ClinchedPlayoffBirth,PointsPG,OppPointsPG,DiffPointsPG,Abbreviation,FullName,ChampionshipScore
+1610612760,Oklahoma City,Thunder,West,32-9,1,Northwest,1,42,14,0.75,22-6,20-7,5-5,,120.0,108.0,12.0,OKC,Oklahoma City Thunder,114.0
+1610612765,Detroit,Pistons,East,26-7,1,Central,1,40,13,0.755,21-6,18-7,8-2,,117.0,109.0,8.0,DET,Detroit Pistons,106.2
+1610612759,San Antonio,Spurs,West,24-13,2,Southwest,1,38,16,0.704,19-6,18-10,8-2,,118.0,112.0,6.0,SAS,San Antonio Spurs,98.16
+1610612738,Boston,Celtics,East,24-13,2,Atlantic,1,35,19,0.648,18-9,17-10,7-3,,115.0,108.0,7.0,BOS,Boston Celtics,97.92
+1610612752,New York,Knicks,East,24-13,3,Atlantic,2,35,20,0.636,21-7,13-13,8-2,,118.0,112.0,6.0,NYK,New York Knicks,93.44
+1610612743,Denver,Nuggets,West,20-9,3,Northwest,2,35,20,0.636,15-11,20-9,5-5,,120.0,116.0,4.0,DEN,Denver Nuggets,89.44
+1610612745,Houston,Rockets,West,19-16,4,Southwest,2,33,20,0.623,18-7,15-13,6-4,,115.0,110.0,5.0,HOU,Houston Rockets,88.92
+1610612739,Cleveland,Cavaliers,East,20-13,4,Central,2,34,21,0.618,18-11,16-10,9-1,,120.0,116.0,4.0,CLE,Cleveland Cavaliers,86.72
+1610612750,Minnesota,Timberwolves,West,19-17,6,Northwest,3,34,22,0.607,19-10,15-12,7-3,,120.0,115.0,5.0,MIN,Minnesota Timberwolves,84.28
+1610612761,Toronto,Raptors,East,24-15,5,Atlantic,3,32,23,0.582,16-13,16-10,6-4,,114.0,112.0,2.0,TOR,Toronto Raptors,79.28
+1610612747,Los Angeles,Lakers,West,22-14,5,Pacific,1,33,21,0.611,15-10,18-11,6-4,,116.0,116.0,0.0,LAL,Los Angeles Lakers,76.44
+1610612756,Phoenix,Suns,West,22-16,7,Pacific,2,32,23,0.582,18-10,14-13,5-5,,114.0,112.0,2.0,PHX,Phoenix Suns,75.28
+1610612755,Philadelphia,76ers,East,19-18,6,Atlantic,4,30,24,0.556,15-14,15-10,6-4,,116.0,116.0,0.0,PHI,Philadelphia 76ers,72.24000000000001
+1610612744,Golden State,Warriors,West,19-16,8,Pacific,3,29,26,0.527,18-10,11-16,4-6,,116.0,114.0,2.0,GSW,Golden State Warriors,71.08
+1610612748,Miami,Heat,East,15-16,8,Southeast,2,29,27,0.518,16-11,13-16,5-5,,120.0,117.0,2.0,MIA,Miami Heat,70.72
+1610612753,Orlando,Magic,East,19-18,7,Southeast,1,28,25,0.528,17-9,10-14,5-5,,115.0,115.0,0.0,ORL,Orlando Magic,69.12
+1610612766,Charlotte,Hornets,East,16-20,9,Southeast,3,26,29,0.473,12-14,14-15,9-1,,116.0,114.0,2.0,CHA,Charlotte Hornets,66.92
+1610612746,LA,Clippers,West,16-16,10,Pacific,4,26,28,0.481,13-11,13-17,6-4,,112.0,112.0,0.0,LAC,Los Angeles Clippers,61.239999999999995
+1610612757,Portland,Trail Blazers,West,21-16,9,Northwest,4,27,29,0.482,16-13,11-16,4-6,,116.0,118.0,-2.0,POR,Portland Trail Blazers,59.28
+1610612737,Atlanta,Hawks,East,13-20,10,Southeast,4,26,30,0.464,10-15,16-15,5-5,,117.0,119.0,-1.0,ATL,Atlanta Hawks,58.56
+1610612763,Memphis,Grizzlies,West,16-21,11,Southwest,3,20,33,0.377,10-15,9-17,2-8,,115.0,117.0,-2.0,MEM,Memphis Grizzlies,51.08
+1610612741,Chicago,Bulls,East,16-22,11,Central,3,24,31,0.436,15-12,9-19,1-9,,117.0,121.0,-4.0,CHI,Chicago Bulls,49.44
+1610612749,Milwaukee,Bucks,East,17-18,12,Central,4,23,30,0.434,12-12,11-18,5-5,,112.0,115.0,-3.0,MIL,Milwaukee Bucks,49.36
+1610612742,Dallas,Mavericks,West,11-25,12,Southwest,4,19,35,0.352,14-16,5-18,1-9,,114.0,117.0,-3.0,DAL,Dallas Mavericks,46.08
+1610612751,Brooklyn,Nets,East,11-22,13,Atlantic,5,15,38,0.283,8-19,7-19,3-7,,108.0,115.0,-7.0,BKN,Brooklyn Nets,33.32
+1610612762,Utah,Jazz,West,10-25,13,Northwest,5,18,38,0.321,11-18,7-20,3-7,,118.0,126.0,-8.0,UTA,Utah Jazz,32.84
+1610612740,New Orleans,Pelicans,West,9-26,14,Southwest,5,15,41,0.268,9-20,6-21,5-5,,115.0,120.0,-6.0,NOP,New Orleans Pelicans,32.72
+1610612754,Indiana,Pacers,East,11-26,14,Central,5,15,40,0.273,10-18,5-22,5-5,,111.0,119.0,-7.0,IND,Indiana Pacers,30.92
+1610612758,Sacramento,Kings,West,8-29,15,Pacific,5,12,44,0.214,9-19,3-25,0-10,,110.0,121.0,-10.0,SAC,Sacramento Kings,20.560000000000002
+1610612764,Washington,Wizards,East,9-23,15,Southeast,5,14,39,0.264,9-18,5-21,4-6,,112.0,123.0,-11.0,WAS,Washington Wizards,20.560000000000002

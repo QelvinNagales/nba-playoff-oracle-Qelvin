@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<!-- NBA Playoff Oracle - Championship Predictions -->
+<html lang="en" data-version="4.104.1" data-theme="NBA"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="manifest" href="https://www.nba.com/site-manifest.json">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title>Playoff Oracle | Championship Predictions | NBA.com</title>
+<meta name="description" content="AI-Powered NBA Championship Predictions using Azure Machine Learning">
+<link rel="icon" href="https://www.nba.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.nba.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.nba.com/favicon-16x16.png">
+<link rel="apple-touch-icon" href="https://www.nba.com/apple-touch-icon.png">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta property="og:site_name" content="NBA">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link rel="stylesheet" href="./Stats_files/91a6753dacb10bba.css" data-n-g="">
+<link rel="stylesheet" href="./Stats_files/158de827fd463d06.css" data-n-p="">
+<link rel="stylesheet" href="./Stats_files/54efc4698228ba94.css" data-n-p="">
+<style>
+/* NBA Playoff Oracle - Clean NBA.com Style */
+.oracle-page-header {
+    background: #ffffff;
+    padding: 32px 0 24px 0;
+    border-bottom: 1px solid #ffffff;
+}
+.oracle-page-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+.oracle-page-header h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #000000;
+    text-transform: uppercase;
+    margin: 0 0 8px 0;
+    letter-spacing: 1px;
+}
+.oracle-page-header p {
+    color: #888;
+    font-size: 14px;
+    color: #000000;
+    margin: 0;
+}
+.oracle-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #333;
+}
+.oracle-subtitle-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #666;
+}
+.oracle-subtitle-item span {
+    color: #888;
+}
+
+/* Main Content Area - NBA Style */
+.MainContent { background: #ffffff; min-height: 100vh; }
+.oracle-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 16px;
+}
+.section-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 0.5px;
+}
+.section-title .season {
+    font-size: 12px;
+    color: #888;
+    font-weight: 400;
+    text-transform: none;
+}
+
+/* Conference Grid */
+.conference-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+    .conference-grid { grid-template-columns: 1fr; }
+}
+.conference-panel {
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.conference-header {
+    padding: 14px 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+}
+.conference-header.west { background: #1d428a; }
+.conference-header.east { background: #c8102e; }
+
+/* Team Row - NBA Table Style */
+.team-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #222;
+    transition: background 0.15s;
+}
+.team-row:hover { background: rgba(255,255,255,0.03); }
+.team-row:last-child { border-bottom: none; }
+.team-row.top-3 { background: rgba(253,185,39,0.08); }
+.team-rank {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+.team-rank.gold { background: #c8102e; color: #fff; }
+.team-rank.silver { background: #1d428a; color: #fff; }
+.team-rank.bronze { background: #1d428a; color: #fff; }
+.team-rank.regular { background: #252525; color: #888; }
+.team-logo-cell {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+.team-logo-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.team-info-cell { flex: 1; }
+.team-name-text {
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 2px;
+}
+.team-record-text {
+    font-size: 12px;
+    color: #888;
+}
+.team-score-cell {
+    text-align: right;
+    padding-left: 12px;
+}
+.score-value {
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+}
+.score-label {
+    font-size: 10px;
+    color: #666;
+    text-transform: uppercase;
+}
+
+/* Rankings Table - NBA Stats Style */
+.StatsTableContainer {
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.StatsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+.StatsTable thead {
+    background: #1a1a1a;
+}
+.StatsTable th {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #fff;
+}
+.StatsTable th:last-child { text-align: right; }
+.StatsTable td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #222;
+    font-size: 14px;
+    color: #fff;
+}
+.StatsTable td:last-child { text-align: right; }
+.StatsTable tr:hover td { background: rgba(255,255,255,0.02); }
+.StatsTable .team-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.StatsTable .team-cell img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+.win-bar {
+    width: 80px;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+.win-bar-fill {
+    height: 100%;
+    background: #c8102e;
+    border-radius: 3px;
+}
+
+/* Footer */
+.oracle-footer {
+    background: #0d0d0d;
+    padding: 40px 16px;
+    text-align: center;
+    border-top: 1px solid #222;
+    margin-top: 48px;
+}
+.oracle-footer p {
+    color: #666;
+    font-size: 12px;
+    margin-bottom: 16px;
+}
+.tech-badges {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.tech-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: #1a1a1a;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #888;
+}
+
+/* Custom Navigation Bar with NBA Logo */
+.custom-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  z-index: 99999;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  font-family: 'Roboto', sans-serif;
+  padding: 0 20px;
+}
+.custom-nav-bar .nav-logo-link {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  padding: 0;
+}
+.custom-nav-bar .nav-logo {
+  height: 42px;
+  width: auto;
+}
+.custom-nav-bar .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.custom-nav-bar a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 14px;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  border-bottom: 3px solid transparent;
+}
+.custom-nav-bar a:hover {
+  color: #fff;
+  border-bottom-color: rgba(200,16,46,0.5);
+}
+.custom-nav-bar a.active {
+  color: #fff;
+  border-bottom-color: #c8102e;
+}
+.custom-nav-bar a.oracle-link {
+  background: linear-gradient(135deg, #c8102e 0%, #1d428a 100%);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 4px;
+  margin-left: 12px;
+  border-bottom: none;
+  padding: 8px 16px;
+}
+.custom-nav-bar a.oracle-link:hover {
+  background: linear-gradient(135deg, #e01234 0%, #2558b3 100%);
+  border-bottom: none;
+}
+body {
+  padding-top: 60px !important;
+}
+</style>
+</head>
+<body data-drawer-open="false">
+<nav class="custom-nav-bar">
+  <a href="Games.html" class="nav-logo-link"><img src="https://cdn.nba.com/logos/leagues/logo-nba.svg" alt="NBA" class="nav-logo"></a>
+  <div class="nav-links">
+    <a href="Games.html">Games</a>
+    <a href="Stats.html">Stats</a>
+    <a href="Schedule.html">Schedule</a>
+    <a href="Standings.html">Standings</a>
+    <a href="Teams.html">Teams</a>
+    <a href="Players.html">Players</a>
+    <a href="predictions.html" class="oracle-link active">Oracle</a>
+  </div>
+</nav>
+<script src="nba-data-loader.js"></script>
+<script src="nba-live-data.js"></script>
+<div id="__next">
+
+<!-- Page Header -->
+<div class="oracle-page-header">
+    <div class="oracle-page-header-inner">
+        <h1>Playoff Oracle</h1>
+        <p>Championship Predictions powered by Azure Machine Learning</p>
+        <div class="oracle-subtitle">
+            <div class="oracle-subtitle-item">Season: <span>2025-26</span></div>
+            <div class="oracle-subtitle-item">Data: <span>Live via nba_api</span></div>
+            <div class="oracle-subtitle-item">Updated: <span id="last-updated">Loading...</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<main class="MainContent">
+<div class="oracle-container">
+
+    <!-- Conference Predictions -->
+    <div class="section-title">
+        Championship Predictions by Conference
+        <span class="season">2025-26 Season</span>
+    </div>
+    
+    <div class="conference-grid">
+        <!-- Western Conference -->
+        <div class="conference-panel">
+            <div class="conference-header west">Western Conference</div>
+            <div id="west-teams"></div>
+        </div>
+        
+        <!-- Eastern Conference -->
+        <div class="conference-panel">
+            <div class="conference-header east">Eastern Conference</div>
+            <div id="east-teams"></div>
+        </div>
+    </div>
+
+    <!-- Overall Rankings Table -->
+    <div class="section-title">Overall Championship Rankings</div>
+    <div class="StatsTableContainer">
+        <table class="StatsTable">
+            <thead>
+                <tr>
+                    <th style="width:60px;">Rank</th>
+                    <th>Team</th>
+                    <th>Conference</th>
+                    <th>Record</th>
+                    <th>Win %</th>
+                    <th style="text-align:right;">Championship Score</th>
+                </tr>
+            </thead>
+            <tbody id="rankings-body"></tbody>
+        </table>
+    </div>
+
+</div>
+</main>
+
+<!-- Footer -->
+<div class="oracle-footer">
+    <p>Data sourced from official NBA statistics via nba_api</p>
+    <div class="tech-badges">
+        <span class="tech-badge">Python + nba_api</span>
+        <span class="tech-badge">Azure ML</span>
+        <span class="tech-badge">Pandas + NumPy</span>
+    </div>
+</div>
+
+</div>
+
+<script>
+// Get team logo URL
+function getTeamLogo(teamId) {
+    return `https://cdn.nba.com/logos/nba/${teamId}/global/L/logo.svg`;
+}
+
+// Calculate Championship Score based on various factors
+function calculateChampionshipScore(team, allTeams) {
+    const wins = team.wins || 0;
+    const losses = team.losses || 0;
+    const totalGames = wins + losses;
+    const winPct = totalGames > 0 ? wins / totalGames : 0;
+    
+    // Base score from win percentage (max 50 points)
+    let score = winPct * 50;
+    
+    // Bonus for high win total (max 30 points)
+    const maxWins = Math.max(...allTeams.map(t => t.wins || 0));
+    score += (wins / maxWins) * 30;
+    
+    // Playoff position bonus (max 20 points)
+    const rank = team.rank || 15;
+    if (rank <= 6) score += (7 - rank) * 3; // Top 6 get playoff bonus
+    else if (rank <= 10) score += (11 - rank) * 1.5; // Play-in bonus
+    
+    return Math.round(score * 10) / 10;
+}
+
+function getRankClass(rank) {
+    if (rank === 1) return 'gold';
+    if (rank === 2) return 'silver';
+    if (rank === 3) return 'bronze';
+    return 'regular';
+}
+
+async function loadAndRenderPredictions() {
+    try {
+        // Load live data
+        const response = await fetch('data/nba_standings_live.json');
+        if (!response.ok) throw new Error('Could not load standings data');
+        
+        const standings = await response.json();
+        
+        // Update last fetched time
+        if (standings.fetched_at) {
+            const date = new Date(standings.fetched_at);
+            document.getElementById('last-updated').textContent = date.toLocaleDateString('en-US', {
+                month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit'
+            });
+        }
+        
+        const eastTeams = standings.Eastern || [];
+        const westTeams = standings.Western || [];
+        const allTeams = [...eastTeams, ...westTeams];
+        
+        // Calculate championship scores
+        const processedEast = eastTeams.map(team => ({
+            ...team,
+            conf: 'East',
+            score: calculateChampionshipScore(team, allTeams)
+        })).sort((a, b) => b.score - a.score);
+        
+        const processedWest = westTeams.map(team => ({
+            ...team,
+            conf: 'West',
+            score: calculateChampionshipScore(team, allTeams)
+        })).sort((a, b) => b.score - a.score);
+        
+        // Render Western Conference
+        document.getElementById('west-teams').innerHTML = processedWest.slice(0, 8).map((team, i) => `
+            <div class="team-row ${i < 3 ? 'top-3' : ''}">
+                <div class="team-rank ${getRankClass(i+1)}">${i+1}</div>
+                <div class="team-logo-cell"><img src="${getTeamLogo(team.team_id)}" alt="${team.team_name}"></div>
+                <div class="team-info-cell">
+                    <div class="team-name-text">${team.team_city} ${team.team_name}</div>
+                    <div class="team-record-text">${team.wins}-${team.losses} • Seed #${team.rank}</div>
+                </div>
+                <div class="team-score-cell">
+                    <div class="score-value">${team.score.toFixed(1)}</div>
+                    <div class="score-label">Score</div>
+                </div>
+            </div>
+        `).join('');
+        
+        // Render Eastern Conference
+        document.getElementById('east-teams').innerHTML = processedEast.slice(0, 8).map((team, i) => `
+            <div class="team-row ${i < 3 ? 'top-3' : ''}">
+                <div class="team-rank ${getRankClass(i+1)}">${i+1}</div>
+                <div class="team-logo-cell"><img src="${getTeamLogo(team.team_id)}" alt="${team.team_name}"></div>
+                <div class="team-info-cell">
+                    <div class="team-name-text">${team.team_city} ${team.team_name}</div>
+                    <div class="team-record-text">${team.wins}-${team.losses} • Seed #${team.rank}</div>
+                </div>
+                <div class="team-score-cell">
+                    <div class="score-value">${team.score.toFixed(1)}</div>
+                    <div class="score-label">Score</div>
+                </div>
+            </div>
+        `).join('');
+        
+        // Render Overall Rankings Table
+        const allProcessed = [...processedEast, ...processedWest].sort((a, b) => b.score - a.score);
+        document.getElementById('rankings-body').innerHTML = allProcessed.slice(0, 16).map((team, i) => {
+            const totalGames = team.wins + team.losses;
+            const winPct = totalGames > 0 ? (team.wins / totalGames * 100) : 0;
+            return `
+            <tr>
+                <td><div class="team-rank ${getRankClass(i+1)}" style="width:28px;height:28px;font-size:12px;">${i+1}</div></td>
+                <td>
+                    <div class="team-cell">
+                        <img src="${getTeamLogo(team.team_id)}" alt="${team.team_name}">
+                        <span>${team.team_city} ${team.team_name}</span>
+                    </div>
+                </td>
+                <td>${team.conf}ern</td>
+                <td>${team.wins}-${team.losses}</td>
+                <td>
+                    <span class="win-bar"><span class="win-bar-fill" style="width:${winPct}%"></span></span>
+                    ${winPct.toFixed(1)}%
+                </td>
+                <td style="color:#fff;font-weight:700;font-size:16px;">${team.score.toFixed(1)}</td>
+            </tr>
+        `}).join('');
+        
+        // Add predicted champion banner
+        const champion = allProcessed[0];
+        if (champion) {
+            const banner = document.createElement('div');
+            banner.className = 'champion-prediction';
+            banner.innerHTML = `
+                <div style="background: linear-gradient(135deg, #c8102e 0%, #1d428a 100%); color: white; padding: 24px; border-radius: 8px; text-align: center; margin-bottom: 32px;">
+                    <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; opacity: 0.8;">Predicted 2025-26 NBA Champion</div>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 16px;">
+                        <img src="${getTeamLogo(champion.team_id)}" style="width: 64px; height: 64px;">
+                        <div>
+                            <div style="font-size: 28px; font-weight: 700;">${champion.team_city} ${champion.team_name}</div>
+                            <div style="font-size: 14px; opacity: 0.9;">${champion.wins}-${champion.losses} • Championship Score: ${champion.score.toFixed(1)}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            const container = document.querySelector('.oracle-container');
+            const firstSection = container.querySelector('.section-title');
+            container.insertBefore(banner, firstSection);
+        }
+        
+    } catch (error) {
+        console.error('Error loading predictions:', error);
+        document.getElementById('west-teams').innerHTML = '<div style="padding:20px;color:#888;">Error loading data. Run fetch_live_data.py first.</div>';
+        document.getElementById('east-teams').innerHTML = '<div style="padding:20px;color:#888;">Error loading data. Run fetch_live_data.py first.</div>';
+    }
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', loadAndRenderPredictions);
+</script>
+
+</body></html>
