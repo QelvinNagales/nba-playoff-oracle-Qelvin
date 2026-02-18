@@ -1,0 +1,452 @@
+/* NBA Playoff Oracle - CSS Fix for saved NBA.com pages */
+
+/* Hide the hamburger menu button and its expanded navigation */
+.NavHamburger_hamburger__kqDDP,
+[class*="NavHamburger"],
+[class*="navToggle"],
+.NavHamburger_navToggle__nOZPv,
+button[title*="Navigation Toggle"] {
+    display: none !important;
+}
+
+/* Hide the expanded nav menu list and all its nested lists */
+#nav-ul,
+.NavBar_menu__yO4Am,
+[class*="NavBar_menu"],
+.NavBar_menu__yO4Am li ul,
+[class*="NavBarMenu"],
+[class*="NavMenu"],
+.NavBar_nav__U9xyc > div > ul {
+    display: none !important;
+}
+
+/* CRITICAL: Hide the specific dropdown classes that show as bullet lists */
+.NavDropdown_dropdown__HuIep,
+.NavDropdown_list__Phy7G,
+.NavDropdownChild_item__k5Oea,
+[class*="NavDropdown"],
+[class*="NavDropdownChild"],
+[class*="DropdownContent"],
+[class*="dropdown__"],
+[class*="Dropdown_"] {
+    display: none !important;
+}
+
+/* Hide all expanded sub-navigation lists */
+[class*="NavBar"] ul ul,
+[class*="BlockNav"],
+[class*="SubNav"],
+[class*="MegaMenu"],
+[class*="dropdown"] {
+    display: none !important;
+}
+
+/* Keep only our custom navigation visible */
+.custom-nav-bar {
+    display: flex !important;
+}
+
+/* Hide all expanded navigation menus and bullet lists from saved pages */
+body > div > ul,
+body > div > nav > ul,
+#__next > ul,
+#__next > div > ul:not([class]),
+main ~ ul,
+header ~ ul,
+nav ~ ul,
+button + ul,
+[role="navigation"] ul ul,
+.Navigation ul ul,
+[class*="Navigation"] > ul > li > ul,
+[class*="Menu"] ul,
+[class*="Drawer"] ul,
+[class*="Panel"] ul:not([class]) {
+    display: none !important;
+}
+
+/* Hide Navigation Toggle button and associated content */
+button:has(+ ul),
+button[aria-label*="Navigation"],
+button[aria-label*="Menu"],
+[class*="NavigationToggle"],
+[class*="HamburgerMenu"],
+[class*="MobileMenu"],
+[class*="mobile-menu"],
+[class*="nav-toggle"] {
+    display: none !important;
+}
+
+/* Hide any raw list that appears right after the header/nav */
+.custom-nav-bar ~ ul,
+.custom-nav-bar ~ div > ul:not([class]),
+header + ul,
+nav + ul {
+    display: none !important;
+}
+
+/* More specific: hide lists containing typical NBA.com navigation items */
+ul li a[href*="/allstar"],
+ul li a[href*="/games"],
+ul li a[href*="/schedule"],
+ul li a[href*="/standings"],
+ul li a[href*="/stats"],
+ul li a[href*="/teams"],
+ul li a[href*="/players"],
+ul li a[href*="/watch"],
+ul li a[href*="/news"] {
+    /* These links in bullet lists should be hidden */
+}
+
+/* Hide the entire list if it contains these navigation patterns */
+body > div:first-of-type > ul {
+    display: none !important;
+}
+
+/* Ensure main content is visible and properly styled */
+main,
+[class*="Main"],
+[class*="Content"],
+[class*="Games"],
+[class*="Scoreboard"],
+[class*="Schedule"],
+[class*="Standings"],
+[class*="Stats"],
+[class*="Teams"],
+[class*="Players"] {
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Fix body spacing */
+body {
+    background-color: #fff;
+}
+
+/* Hide broken image placeholders that show "Logo" text */
+img[alt="Logo"]:not([src]),
+img[src=""]:hover::before {
+    opacity: 0;
+}
+
+/* Style the main page content area */
+h1, h2, h3 {
+    color: #000;
+    margin-top: 20px;
+}
+
+/* Fix large unstyled list blocks - target by structure */
+body > div > ul:first-of-type,
+#__next > div > ul,
+[data-testid] > ul:not([class]) {
+    display: none !important;
+}
+
+/* ===== SIMPLE BLACK FOOTER ===== */
+/* Hide the original NBA.com footer */
+footer,
+[class*="Footer"],
+[class*="footer"],
+[class*="SiteFooter"],
+[data-testid="footer"],
+#footer {
+    display: none !important;
+}
+
+/* Custom simple black footer */
+body::after {
+    content: "NBA Playoff Oracle 2025-2026";
+    display: block;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    margin-top: 40px;
+    position: relative;
+    bottom: 0;
+}
+
+/* ===== STANDINGS PAGE - Keep Original Style ===== */
+/* Only hide ads */
+[class*="DisplayAd"],
+[class*="GoogleDisplayAd"],
+[class*="adBlock"],
+[id*="_ad_"] {
+    display: none !important;
+}
+
+/* Fix container width to match NBA.com */
+[class*="MaxWidthContainer"],
+[class*="Layout_mainContent"],
+[class*="StandingsView"],
+[class*="Crom_container"] {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+}
+
+[class*="Crom_base"] {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+[class*="Crom_table"] {
+    width: 100% !important;
+    display: table !important;
+    table-layout: auto !important;
+}
+
+/* Fix table row display */
+[class*="Crom_table"] tr {
+    display: table-row !important;
+}
+
+[class*="Crom_table"] td,
+[class*="Crom_table"] th {
+    display: table-cell !important;
+    vertical-align: middle !important;
+}
+
+/* Fix team cell - keep rank, logo, name inline */
+[class*="StatsStandingsTable_primary"],
+[class*="Crom_primary"] {
+    display: table-cell !important;
+}
+
+[class*="StatsStandingsTable_teamLink"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+}
+
+[class*="StatsStandingsTable_teamRank"] {
+    display: inline-block !important;
+    margin-right: 8px !important;
+}
+
+[class*="StatsStandingsTable_teamLogoBlock"],
+[class*="TeamLogo_block"] {
+    display: inline-block !important;
+    margin-right: 8px !important;
+}
+
+[class*="StatsStandingsTable_teamCity"],
+[class*="StatsStandingsTable_teamName"] {
+    display: inline !important;
+}
+
+/* ===== FIX LEGENDS - Compact Grid Layout ===== */
+[class*="StandingsGlossary_base"] {
+    display: grid !important;
+    grid-template-columns: repeat(4, auto) !important;
+    gap: 4px 32px !important;
+    padding: 8px 20px !important;
+    background: #f8f8f8 !important;
+    border-radius: 4px !important;
+}
+
+[class*="StandingsGlossary_item"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    padding: 2px 0 !important;
+    font-size: 12px !important;
+}
+
+[class*="StandingsGlossary_text10"] {
+    display: inline !important;
+    font-weight: bold !important;
+    color: #c9082a !important;
+}
+
+[class*="StandingsGlossary_text11"] {
+    display: inline !important;
+    color: #333 !important;
+}
+
+/* ===== FIX TIEBREAKER RULES - Very Compact ===== */
+[class*="StandingsRules_sr"] {
+    padding: 12px 20px !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+}
+
+[class*="StandingsRules_sr"] section {
+    margin-bottom: 8px !important;
+}
+
+[class*="StandingsRules_srTitle"] {
+    margin-bottom: 4px !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+}
+
+[class*="StandingsRules_srList"] {
+    display: inline !important;
+    padding-left: 0 !important;
+    list-style: none !important;
+    margin: 0 !important;
+}
+
+[class*="StandingsRules_srList"] li {
+    display: inline !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+[class*="StandingsRules_srList"] li:not(:last-child)::after {
+    content: " | " !important;
+    color: #999 !important;
+}
+
+[class*="StandingsRules_srItem"] {
+    font-size: 12px !important;
+}
+
+/* Detailed tiebreaker paragraphs - smaller text */
+[class*="StandingsRules_sr"] p:not([class*="srTitle"]) {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    margin: 4px 0 !important;
+    color: #555 !important;
+}
+
+/* ===== FIX HEADER - Remove Negative Space ===== */
+body {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Kill all the excess top spacing */
+#__next,
+#__next > div,
+#__next > div:first-child,
+[class*="Layout_layout"],
+[class*="Layout_base"],
+[class*="Layout_above"],
+[class*="Layout_layoutBase"] {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+main,
+[class*="Layout_mainContent"] {
+    padding-top: 50px !important;
+    margin-top: 0 !important;
+}
+
+[class*="StandingsView"],
+[class*="LeagueStandings"] {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+[class*="StandingsView_content"],
+[class*="PageHeader"],
+[class*="Block_block"] {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+[class*="Block_blockContent"] {
+    padding: 8px 0 !important;
+}
+
+/* Reduce title top margin */
+[class*="LeagueStandings_title"],
+h1[class*="Standings"] {
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+}
+
+/* Reduce blank space between sections */
+section[class*="Block_block"] {
+    margin-top: 0 !important;
+    margin-bottom: 4px !important;
+}
+
+/* Print button styling */
+button[class*="Button_button"] {
+    cursor: pointer !important;
+}
+
+/* ===== STATS PAGE - Fix negative space ===== */
+[class*="StatsHeader"],
+[class*="StatsBanner"],
+[class*="StatsView"] {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+[class*="StatsHeader_base"],
+[class*="StatsBanner_base"] {
+    margin-top: 0 !important;
+    padding-top: 10px !important;
+}
+
+/* Stats page sub-navigation - reduce spacing */
+[class*="StatsTabNav"],
+[class*="StatsNav"] {
+    padding: 4px 0 !important;
+    margin: 0 !important;
+}
+
+[class*="StatsTabNav"] a,
+[class*="StatsNav"] a {
+    padding: 4px 12px !important;
+}
+
+/* Stats page content area */
+[class*="StatsView_content"],
+[class*="StatsHome"] {
+    padding-top: 8px !important;
+    margin-top: 0 !important;
+}
+
+/* Hide GAMES and SCHEDULE from original NBA nav */
+a[href*="/games"],
+a[href*="/schedule"],
+[data-text="GAMES"],
+[data-text="SCHEDULE"] {
+    display: none !important;
+}
+
+/* ===== PLAYERS PAGE - Hide Show Historic Toggle ===== */
+[class*="Toggle_toggle"][data-is-active="false"]:has(span:contains("Show Historic")),
+.Toggle_toggle__2_SBA.PlayerList_toggle__RL_YD,
+label:has(input[name="showHistoric"]),
+label:has(span.Toggle_labelText__XEXij) {
+    display: none !important;
+}
+
+/* Make sure pagination buttons are visible */
+.Pagination_buttons__YpLUe,
+.Pagination_button__sqGoH {
+    display: inline-flex !important;
+    cursor: pointer !important;
+}
+
+.Pagination_button__sqGoH:disabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+
+/* Make search input more prominent */
+input[placeholder*="Search Players"],
+input[aria-label*="Search"] {
+    border: 1px solid #ccc !important;
+    padding: 8px 12px !important;
+    border-radius: 4px !important;
+    min-width: 200px !important;
+}
+
+input[placeholder*="Search Players"]:focus,
+input[aria-label*="Search"]:focus {
+    border-color: #1d428a !important;
+    outline: none !important;
+}
