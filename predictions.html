@@ -368,7 +368,7 @@ body {
     <div class="oracle-page-header-inner">
         <div class="oracle-header-left">
             <h1>Playoff Oracle</h1>
-            <p class="subtitle">Championship Predictions powered by Azure Machine Learning</p>
+            <p class="subtitle">Highest performing team powered by Azure Machine Learning</p>
         </div>
         <div class="oracle-subtitle">
             <div class="oracle-subtitle-item">Season: <span>2025-26</span></div>
@@ -384,7 +384,7 @@ body {
 
     <!-- Conference Predictions -->
     <div class="section-title">
-        Championship Predictions by Conference
+        Playoffs Contenders Predictions by Conference
         <span class="season">2025-26 Season</span>
     </div>
     
@@ -413,6 +413,9 @@ body {
                     <th>Conference</th>
                     <th>Record</th>
                     <th>Win %</th>
+                    <th style="text-align:center;">+/-</th>
+                    <th style="text-align:center;">DEF (OPP PPG)</th>
+                    <th style="text-align:center;">3PT %</th>
                     <th style="text-align:right;">Prediction Score</th>
                 </tr>
             </thead>
@@ -553,6 +556,10 @@ async function loadAndRenderPredictions() {
         const allProcessed = predictions.sort((a, b) => b.championship_score - a.championship_score);
         document.getElementById('rankings-body').innerHTML = allProcessed.slice(0, 16).map((team, i) => {
             const winPct = team.win_pct * 100;
+            const plusMinus = team.diff_points || 0;
+            const oppPpg = team.opp_points_pg || 0;
+            const fg3Pct = (team.fg3_pct || 0) * 100;
+            const plusMinusColor = plusMinus >= 0 ? '#4CAF50' : '#f44336';
             return `
             <tr>
                 <td><div class="team-rank ${getRankClass(i+1)}" style="width:28px;height:28px;font-size:12px;">${i+1}</div></td>
@@ -568,6 +575,9 @@ async function loadAndRenderPredictions() {
                     <span class="win-bar"><span class="win-bar-fill" style="width:${winPct}%"></span></span>
                     ${winPct.toFixed(1)}%
                 </td>
+                <td style="text-align:center;color:${plusMinusColor};font-weight:600;">${plusMinus >= 0 ? '+' : ''}${plusMinus.toFixed(1)}</td>
+                <td style="text-align:center;">${oppPpg.toFixed(1)}</td>
+                <td style="text-align:center;">${fg3Pct.toFixed(1)}%</td>
                 <td style="color:#fff;font-weight:700;font-size:16px;">${team.championship_score.toFixed(1)}</td>
             </tr>
         `}).join('');
