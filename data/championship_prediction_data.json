@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-02-19T05:41:43.157544",
+  "fetched_at": "2026-02-19T22:59:46.337325",
   "season": "2025-26",
   "predictions": [
     {
@@ -12,7 +12,9 @@
       "losses": 14,
       "win_pct": 0.75,
       "diff_points": 12.0,
-      "championship_score": 99.0
+      "opp_points_pg": 108.0,
+      "fg3_pct": 0.362,
+      "championship_score": 97.7
     },
     {
       "team_id": 1610612765,
@@ -24,19 +26,9 @@
       "losses": 13,
       "win_pct": 0.755,
       "diff_points": 8.0,
-      "championship_score": 91.2
-    },
-    {
-      "team_id": 1610612759,
-      "team_name": "Spurs",
-      "team_city": "San Antonio",
-      "conference": "West",
-      "rank": 2,
-      "wins": 38,
-      "losses": 16,
-      "win_pct": 0.704,
-      "diff_points": 6.0,
-      "championship_score": 82.2
+      "opp_points_pg": 109.0,
+      "fg3_pct": 0.349,
+      "championship_score": 87.9
     },
     {
       "team_id": 1610612738,
@@ -48,7 +40,23 @@
       "losses": 19,
       "win_pct": 0.648,
       "diff_points": 7.0,
-      "championship_score": 81.9
+      "opp_points_pg": 108.0,
+      "fg3_pct": 0.363,
+      "championship_score": 81.7
+    },
+    {
+      "team_id": 1610612759,
+      "team_name": "Spurs",
+      "team_city": "San Antonio",
+      "conference": "West",
+      "rank": 2,
+      "wins": 38,
+      "losses": 16,
+      "win_pct": 0.704,
+      "diff_points": 6.0,
+      "opp_points_pg": 112.0,
+      "fg3_pct": 0.347,
+      "championship_score": 75.3
     },
     {
       "team_id": 1610612752,
@@ -60,43 +68,9 @@
       "losses": 20,
       "win_pct": 0.636,
       "diff_points": 6.0,
-      "championship_score": 76.4
-    },
-    {
-      "team_id": 1610612743,
-      "team_name": "Nuggets",
-      "team_city": "Denver",
-      "conference": "West",
-      "rank": 3,
-      "wins": 35,
-      "losses": 20,
-      "win_pct": 0.636,
-      "diff_points": 4.0,
-      "championship_score": 72.4
-    },
-    {
-      "team_id": 1610612750,
-      "team_name": "Timberwolves",
-      "team_city": "Minnesota",
-      "conference": "West",
-      "rank": 4,
-      "wins": 34,
-      "losses": 22,
-      "win_pct": 0.607,
-      "diff_points": 5.0,
-      "championship_score": 70.3
-    },
-    {
-      "team_id": 1610612739,
-      "team_name": "Cavaliers",
-      "team_city": "Cleveland",
-      "conference": "East",
-      "rank": 4,
-      "wins": 34,
-      "losses": 21,
-      "win_pct": 0.618,
-      "diff_points": 4.0,
-      "championship_score": 68.7
+      "opp_points_pg": 112.0,
+      "fg3_pct": 0.378,
+      "championship_score": 71.8
     },
     {
       "team_id": 1610612745,
@@ -108,7 +82,51 @@
       "losses": 20,
       "win_pct": 0.623,
       "diff_points": 5.0,
-      "championship_score": 67.9
+      "opp_points_pg": 110.0,
+      "fg3_pct": 0.37,
+      "championship_score": 68.0
+    },
+    {
+      "team_id": 1610612743,
+      "team_name": "Nuggets",
+      "team_city": "Denver",
+      "conference": "West",
+      "rank": 3,
+      "wins": 35,
+      "losses": 20,
+      "win_pct": 0.636,
+      "diff_points": 4.0,
+      "opp_points_pg": 116.0,
+      "fg3_pct": 0.395,
+      "championship_score": 63.2
+    },
+    {
+      "team_id": 1610612750,
+      "team_name": "Timberwolves",
+      "team_city": "Minnesota",
+      "conference": "West",
+      "rank": 4,
+      "wins": 34,
+      "losses": 22,
+      "win_pct": 0.607,
+      "diff_points": 5.0,
+      "opp_points_pg": 115.0,
+      "fg3_pct": 0.375,
+      "championship_score": 62.0
+    },
+    {
+      "team_id": 1610612739,
+      "team_name": "Cavaliers",
+      "team_city": "Cleveland",
+      "conference": "East",
+      "rank": 4,
+      "wins": 34,
+      "losses": 21,
+      "win_pct": 0.618,
+      "diff_points": 4.0,
+      "opp_points_pg": 116.0,
+      "fg3_pct": 0.358,
+      "championship_score": 59.0
     },
     {
       "team_id": 1610612761,
@@ -120,19 +138,9 @@
       "losses": 23,
       "win_pct": 0.582,
       "diff_points": 2.0,
-      "championship_score": 60.3
-    },
-    {
-      "team_id": 1610612747,
-      "team_name": "Lakers",
-      "team_city": "Los Angeles",
-      "conference": "West",
-      "rank": 6,
-      "wins": 33,
-      "losses": 21,
-      "win_pct": 0.611,
-      "diff_points": 0.0,
-      "championship_score": 54.4
+      "opp_points_pg": 112.0,
+      "fg3_pct": 0.344,
+      "championship_score": 56.3
     },
     {
       "team_id": 1610612756,
@@ -144,31 +152,23 @@
       "losses": 23,
       "win_pct": 0.582,
       "diff_points": 2.0,
-      "championship_score": 54.3
+      "opp_points_pg": 112.0,
+      "fg3_pct": 0.364,
+      "championship_score": 53.1
     },
     {
-      "team_id": 1610612755,
-      "team_name": "76ers",
-      "team_city": "Philadelphia",
-      "conference": "East",
+      "team_id": 1610612747,
+      "team_name": "Lakers",
+      "team_city": "Los Angeles",
+      "conference": "West",
       "rank": 6,
-      "wins": 30,
-      "losses": 24,
-      "win_pct": 0.556,
+      "wins": 33,
+      "losses": 21,
+      "win_pct": 0.611,
       "diff_points": 0.0,
-      "championship_score": 52.2
-    },
-    {
-      "team_id": 1610612748,
-      "team_name": "Heat",
-      "team_city": "Miami",
-      "conference": "East",
-      "rank": 7,
-      "wins": 29,
-      "losses": 27,
-      "win_pct": 0.518,
-      "diff_points": 2.0,
-      "championship_score": 51.7
+      "opp_points_pg": 116.0,
+      "fg3_pct": 0.35,
+      "championship_score": 46.4
     },
     {
       "team_id": 1610612744,
@@ -180,19 +180,37 @@
       "losses": 26,
       "win_pct": 0.527,
       "diff_points": 2.0,
-      "championship_score": 49.1
+      "opp_points_pg": 114.0,
+      "fg3_pct": 0.362,
+      "championship_score": 45.8
     },
     {
-      "team_id": 1610612753,
-      "team_name": "Magic",
-      "team_city": "Orlando",
+      "team_id": 1610612748,
+      "team_name": "Heat",
+      "team_city": "Miami",
       "conference": "East",
-      "rank": 8,
-      "wins": 28,
-      "losses": 25,
-      "win_pct": 0.528,
-      "diff_points": 0.0,
+      "rank": 7,
+      "wins": 29,
+      "losses": 27,
+      "win_pct": 0.518,
+      "diff_points": 2.0,
+      "opp_points_pg": 117.0,
+      "fg3_pct": 0.36,
       "championship_score": 45.1
+    },
+    {
+      "team_id": 1610612755,
+      "team_name": "76ers",
+      "team_city": "Philadelphia",
+      "conference": "East",
+      "rank": 6,
+      "wins": 30,
+      "losses": 24,
+      "win_pct": 0.556,
+      "diff_points": 0.0,
+      "opp_points_pg": 116.0,
+      "fg3_pct": 0.356,
+      "championship_score": 44.5
     },
     {
       "team_id": 1610612766,
@@ -204,7 +222,23 @@
       "losses": 29,
       "win_pct": 0.473,
       "diff_points": 2.0,
-      "championship_score": 43.9
+      "opp_points_pg": 114.0,
+      "fg3_pct": 0.373,
+      "championship_score": 42.1
+    },
+    {
+      "team_id": 1610612753,
+      "team_name": "Magic",
+      "team_city": "Orlando",
+      "conference": "East",
+      "rank": 8,
+      "wins": 28,
+      "losses": 25,
+      "win_pct": 0.528,
+      "diff_points": 0.0,
+      "opp_points_pg": 115.0,
+      "fg3_pct": 0.342,
+      "championship_score": 39.6
     },
     {
       "team_id": 1610612746,
@@ -216,19 +250,9 @@
       "losses": 28,
       "win_pct": 0.481,
       "diff_points": 0.0,
-      "championship_score": 37.2
-    },
-    {
-      "team_id": 1610612757,
-      "team_name": "Trail Blazers",
-      "team_city": "Portland",
-      "conference": "West",
-      "rank": 9,
-      "wins": 27,
-      "losses": 29,
-      "win_pct": 0.482,
-      "diff_points": -2.0,
-      "championship_score": 36.3
+      "opp_points_pg": 112.0,
+      "fg3_pct": 0.365,
+      "championship_score": 39.1
     },
     {
       "team_id": 1610612737,
@@ -240,31 +264,23 @@
       "losses": 30,
       "win_pct": 0.464,
       "diff_points": -1.0,
-      "championship_score": 34.6
+      "opp_points_pg": 119.0,
+      "fg3_pct": 0.37,
+      "championship_score": 31.4
     },
     {
-      "team_id": 1610612763,
-      "team_name": "Grizzlies",
-      "team_city": "Memphis",
+      "team_id": 1610612757,
+      "team_name": "Trail Blazers",
+      "team_city": "Portland",
       "conference": "West",
-      "rank": 11,
-      "wins": 20,
-      "losses": 33,
-      "win_pct": 0.377,
+      "rank": 9,
+      "wins": 27,
+      "losses": 29,
+      "win_pct": 0.482,
       "diff_points": -2.0,
-      "championship_score": 26.1
-    },
-    {
-      "team_id": 1610612741,
-      "team_name": "Bulls",
-      "team_city": "Chicago",
-      "conference": "East",
-      "rank": 11,
-      "wins": 24,
-      "losses": 31,
-      "win_pct": 0.436,
-      "diff_points": -4.0,
-      "championship_score": 24.4
+      "opp_points_pg": 118.0,
+      "fg3_pct": 0.342,
+      "championship_score": 31.0
     },
     {
       "team_id": 1610612749,
@@ -276,7 +292,37 @@
       "losses": 30,
       "win_pct": 0.434,
       "diff_points": -3.0,
-      "championship_score": 23.4
+      "opp_points_pg": 115.0,
+      "fg3_pct": 0.392,
+      "championship_score": 23.8
+    },
+    {
+      "team_id": 1610612763,
+      "team_name": "Grizzlies",
+      "team_city": "Memphis",
+      "conference": "West",
+      "rank": 11,
+      "wins": 20,
+      "losses": 33,
+      "win_pct": 0.377,
+      "diff_points": -2.0,
+      "opp_points_pg": 117.0,
+      "fg3_pct": 0.351,
+      "championship_score": 23.1
+    },
+    {
+      "team_id": 1610612741,
+      "team_name": "Bulls",
+      "team_city": "Chicago",
+      "conference": "East",
+      "rank": 11,
+      "wins": 24,
+      "losses": 31,
+      "win_pct": 0.436,
+      "diff_points": -4.0,
+      "opp_points_pg": 121.0,
+      "fg3_pct": 0.367,
+      "championship_score": 22.1
     },
     {
       "team_id": 1610612742,
@@ -288,7 +334,9 @@
       "losses": 35,
       "win_pct": 0.352,
       "diff_points": -3.0,
-      "championship_score": 20.1
+      "opp_points_pg": 117.0,
+      "fg3_pct": 0.342,
+      "championship_score": 17.8
     },
     {
       "team_id": 1610612751,
@@ -300,7 +348,9 @@
       "losses": 38,
       "win_pct": 0.283,
       "diff_points": -7.0,
-      "championship_score": 6.3
+      "opp_points_pg": 115.0,
+      "fg3_pct": 0.344,
+      "championship_score": 5.8
     },
     {
       "team_id": 1610612762,
@@ -312,7 +362,9 @@
       "losses": 38,
       "win_pct": 0.321,
       "diff_points": -8.0,
-      "championship_score": 5.8
+      "opp_points_pg": 126.0,
+      "fg3_pct": 0.35,
+      "championship_score": 4.8
     },
     {
       "team_id": 1610612740,
@@ -324,7 +376,9 @@
       "losses": 41,
       "win_pct": 0.268,
       "diff_points": -6.0,
-      "championship_score": 4.7
+      "opp_points_pg": 120.0,
+      "fg3_pct": 0.345,
+      "championship_score": 4.5
     },
     {
       "team_id": 1610612754,
@@ -336,7 +390,9 @@
       "losses": 40,
       "win_pct": 0.273,
       "diff_points": -7.0,
-      "championship_score": 2.9
+      "opp_points_pg": 119.0,
+      "fg3_pct": 0.347,
+      "championship_score": 2.8
     },
     {
       "team_id": 1610612764,
@@ -348,7 +404,9 @@
       "losses": 39,
       "win_pct": 0.264,
       "diff_points": -11.0,
-      "championship_score": -8.4
+      "opp_points_pg": 123.0,
+      "fg3_pct": 0.354,
+      "championship_score": -7.3
     },
     {
       "team_id": 1610612758,
@@ -360,7 +418,9 @@
       "losses": 44,
       "win_pct": 0.214,
       "diff_points": -10.0,
-      "championship_score": -8.4
+      "opp_points_pg": 121.0,
+      "fg3_pct": 0.342,
+      "championship_score": -7.8
     }
   ]
 }

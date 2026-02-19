@@ -16,7 +16,8 @@ from nba_api.stats.endpoints import (
     playergamelogs,
     playerindex,
     commonallplayers,
-    leaguedashplayerstats
+    leaguedashplayerstats,
+    leaguedashteamstats
 )
 from nba_api.stats.static import teams, players
 import json
@@ -378,20 +379,82 @@ def fetch_all_teams():
         log(f"  Error: {e}")
         return []
 
-# ===== 6. BUILD CHAMPIONSHIP PREDICTIONS =====
-def build_championship_predictions(standings):
-    """Build championship prediction scores based on standings"""
+# ===== 6. FETCH TEAM STATS (3PT%, etc.) =====
+def fetch_team_stats():
+    """Fetch team shooting stats including 3PT%"""
+    log("Fetching Team Stats (3PT%, Defense)...")
+    try:
+        stats = leaguedashteamstats.LeagueDashTeamStats(
+            season=CURRENT_SEASON,
+            season_type_all_star=SEASON_TYPE
+        )
+        data = stats.get_normalized_dict()
+        
+        team_stats = {}
+        for team in data.get('LeagueDashTeamStats', []):
+            team_id = team.get('TEAM_ID')
+            team_stats[team_id] = {
+                'fg3_pct': team.get('FG3_PCT', 0) or 0,
+                'def_rating': team.get('DEF_RATING', 0) or 0,
+            }
+        log(f"  Found stats for {len(team_stats)} teams")
+        return team_stats
+    except Exception as e:
+        log(f"  Error fetching team stats: {e}")
+        return {}
+
+# ===== 7. BUILD CHAMPIONSHIP PREDICTIONS =====
+def build_championship_predictions(standings, team_stats=None):
+    """Build championship prediction scores based on standings, defense, and 3PT%"""
     log("Building Championship Predictions...")
+    
+    if team_stats is None:
+        team_stats = {}
+    
+    # Calculate league averages for normalization
+    all_opp_pts = []
+    all_fg3_pct = []
+    for conf in ['Eastern', 'Western']:
+        for team in standings.get(conf, []):
+            opp_pts = team.get('opp_points_pg', 0)
+            if opp_pts > 0:
+                all_opp_pts.append(opp_pts)
+            ts = team_stats.get(team['team_id'], {})
+            fg3 = ts.get('fg3_pct', 0)
+            if fg3 > 0:
+                all_fg3_pct.append(fg3)
+    
+    avg_opp_pts = sum(all_opp_pts) / len(all_opp_pts) if all_opp_pts else 110
+    avg_fg3_pct = sum(all_fg3_pct) / len(all_fg3_pct) if all_fg3_pct else 0.36
     
     all_teams = []
     for conf in ['Eastern', 'Western']:
         for team in standings.get(conf, []):
-            # Calculate championship score
-            win_pct_score = team['win_pct'] * 40
-            diff_score = team.get('diff_points', 0) * 2
-            rank_score = (16 - team['rank']) * 3
+            # Get team shooting stats
+            ts = team_stats.get(team['team_id'], {})
+            fg3_pct = ts.get('fg3_pct', avg_fg3_pct)
             
-            championship_score = win_pct_score + diff_score + rank_score
+            # Defense: lower opponent points = better defense
+            opp_points = team.get('opp_points_pg', avg_opp_pts)
+            
+            # Calculate championship score with all 4 factors:
+            # 1. Win % (Highest impact - 40 points max)
+            win_pct_score = team['win_pct'] * 40
+            
+            # 2. Plus/Minus / Point Differential (High impact - ~20 points)
+            diff_score = team.get('diff_points', 0) * 2
+            
+            # 3. Defense - opponent points allowed (Medium-High impact - ~15 points)
+            # Lower opp points = better defense = higher score
+            defense_score = max(0, (avg_opp_pts - opp_points) * 1.5)
+            
+            # 4. 3PT % (Lower impact - ~10 points)
+            # Higher 3PT% = better perimeter shooting
+            fg3_score = (fg3_pct - 0.30) * 40  # Normalize around 30% baseline
+            
+            rank_score = (16 - team['rank']) * 2
+            
+            championship_score = win_pct_score + diff_score + defense_score + fg3_score + rank_score
             
             all_teams.append({
                 'team_id': team['team_id'],
@@ -403,6 +466,8 @@ def build_championship_predictions(standings):
                 'losses': team['losses'],
                 'win_pct': team['win_pct'],
                 'diff_points': team.get('diff_points', 0),
+                'opp_points_pg': round(opp_points, 1),
+                'fg3_pct': round(fg3_pct, 3),
                 'championship_score': round(championship_score, 1)
             })
     
@@ -447,7 +512,10 @@ def main():
     all_teams = fetch_all_teams()
     time.sleep(1)
     
-    predictions = build_championship_predictions(standings)
+    team_stats = fetch_team_stats()
+    time.sleep(1)
+    
+    predictions = build_championship_predictions(standings, team_stats)
     
     print("\n" + "=" * 60)
     print("DATA FETCH COMPLETE!")
