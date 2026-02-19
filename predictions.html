@@ -420,6 +420,51 @@ body {
         </table>
     </div>
 
+    <!-- Prediction Methodology Section -->
+    <div class="section-title">Prediction Methodology</div>
+    <div class="methodology-section" style="background: #1a1a2e; border-radius: 8px; padding: 20px; margin-bottom: 24px;">
+        <p style="color: #a0a0a0; margin-bottom: 16px;">Our championship predictions are calculated using a weighted formula based on the following key performance indicators:</p>
+        <div class="StatsTableContainer">
+            <table class="StatsTable">
+                <thead>
+                    <tr>
+                        <th style="width:60px;">Rank</th>
+                        <th>Feature</th>
+                        <th>Formula</th>
+                        <th style="text-align:right;">Impact Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="rank-badge gold">1</span></td>
+                        <td><strong>Win % (W_PCT)</strong></td>
+                        <td><code style="background:#2a2a4a; padding:4px 8px; border-radius:4px;">win_pct × 40</code></td>
+                        <td style="text-align:right;"><span style="color:#4CAF50; font-weight:600;">Highest</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge silver">2</span></td>
+                        <td><strong>Plus/Minus (+/-)</strong></td>
+                        <td><code style="background:#2a2a4a; padding:4px 8px; border-radius:4px;">diff_points × 2</code></td>
+                        <td style="text-align:right;"><span style="color:#8BC34A; font-weight:600;">High</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge bronze">3</span></td>
+                        <td><strong>Defense</strong></td>
+                        <td><code style="background:#2a2a4a; padding:4px 8px; border-radius:4px;">(avg_opp_pts - opp_points) × 1.5</code></td>
+                        <td style="text-align:right;"><span style="color:#CDDC39; font-weight:600;">Medium-High</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge regular">4</span></td>
+                        <td><strong>3PT %</strong></td>
+                        <td><code style="background:#2a2a4a; padding:4px 8px; border-radius:4px;">(fg3_pct - 0.30) × 40</code></td>
+                        <td style="text-align:right;"><span style="color:#FF9800; font-weight:600;">Lower</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="color: #707070; margin-top: 16px; font-size: 13px;">* Defense score rewards teams that allow fewer points than league average. 3PT% is normalized around a 30% baseline.</p>
+    </div>
+
 </div>
 </main>
 
