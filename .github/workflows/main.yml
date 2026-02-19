@@ -2,7 +2,7 @@ name: Deploy NBA Oracle to Azure
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
 
 jobs:
   build-and-deploy:
